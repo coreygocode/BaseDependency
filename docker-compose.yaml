@@ -72,7 +72,7 @@ services:
   etcd:
     image: bitnami/etcd:latest
     volumes:
-      - ./data/etcd:/etcd-data
+      - ./data/etcd:/opt/bitnami/etcd/data
     ports:
       - "2379:2379"
       - "2380:2380"
@@ -80,6 +80,7 @@ services:
         ALLOW_NONE_AUTHENTICATION: "yes"
         ETCD_ADVERTISE_CLIENT_URLS: "http://etcd:2379"
         ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+        ETCD_DATA_DIR: "/opt/bitnami/etcd/data"
     networks:
       - myNetwork
 
